@@ -1,0 +1,21 @@
+name: Continuous Integration
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  buildAndTest:
+    name: Build and Test
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Test
